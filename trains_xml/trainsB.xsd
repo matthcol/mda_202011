@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+  <!-- élément racine pour représenter une ligne de train -->
+  <xsd:element name="Line" type="tLine"/>
+
+  <xsd:complexType name="tLine">
+    <xsd:sequence>
+      <xsd:element name="Stations" type="tStations"/>
+      <xsd:element name="Trains" type="tTrains"/>
+	</xsd:sequence>
+	<xsd:attribute name="name" type="xsd:string" use="required" />
+  </xsd:complexType>
+
+  <!-- liste de gares -->
+  <xsd:complexType name="tStations">
+    <xsd:sequence>
+      <xsd:element name="Station" type="tStation" minOccurs="2"
+          maxOccurs="unbounded" />
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <!-- liste de trains -->
+  <xsd:complexType name="tTrains">
+    <xsd:sequence>
+      <xsd:element name="Train" type="tTrain" maxOccurs="unbounded" />
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <!-- un train (détails) -->
+  <xsd:complexType name="tTrain">
+    <xsd:sequence>
+      <xsd:element name="Stage" type="tStop" minOccurs="0" maxOccurs="unbounded" />
+    </xsd:sequence>
+	<xsd:attribute name="type" type="typeTrain" use="required" />
+	<xsd:attribute name="num" type="xsd:int" use="required" />
+  </xsd:complexType>
+
+  <!-- type de train -->
+  <xsd:simpleType name="typeTrain">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="TGV" />
+      <xsd:enumeration value="TER" />
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <!-- type description d'une gare -->
+  <xsd:complexType name="tStation">
+	<xsd:attribute name="name" type="xsd:string" use="required" />
+  </xsd:complexType>
+
+  <!-- type d'un arrêt -->
+  <xsd:complexType name="tStop">
+	<xsd:attribute name="station" type="xsd:string" use="required" />
+	<xsd:attribute name="timeStop" type="xsd:time" use="optional" />
+	<xsd:attribute name="timeStart" type="xsd:time" use="optional" />
+  </xsd:complexType>
+  
+</xsd:schema>

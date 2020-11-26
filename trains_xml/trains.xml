@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Ligne nom="Paris-Bordeaux" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="trains.xsd">
+  <ListeGares>
+     <GareTerminus nom="Paris" />
+     <Gare nom="Saint Pierre des Corps" />
+     <Gare nom="Tours" />
+     <Gare nom="Dangé" />
+     <Gare nom="Châtellerault" />
+     <Gare nom="Futuroscope" />
+     <Gare nom="Poitiers" />
+     <Gare nom="Angoulême" />
+	 <GareTerminus nom="Bordeaux" />
+  </ListeGares>
+  <ListeTrains>
+    <Train num="8369" type="TGV">
+      <Depart gare="Paris" heure="10:30:00" />
+      <Destination gare="Bordeaux" heure="14:00:00" />
+    </Train>
+    <Train num="8325" type="TGV">
+       <Depart gare="Paris" heure="06:00:00" />
+       <Destination gare="Bordeaux" heure="10:00:00" />
+       <Arret gare="Saint Pierre des Corps" arrivee="07:00:00" depart="07:03:00" />
+       <Arret gare="Châtellerault" arrivee="07:23:00" depart="07:25:00" />
+       <Arret gare="Poitiers" arrivee="07:45:00" depart="07:50:00" />
+       <Arret gare="Angoulême" arrivee="08:45:00" depart="08:50:00" />
+   </Train>
+   <Train num="18145" type="TER">
+      <Depart gare="Poitiers" heure="14:40:00" />
+      <Destination gare="Tours" heure="15:45:00" />
+      <Arret gare="Futuroscope" arrivee="14:50:00" depart="14:57:00" />
+      <Arret gare="Châtellerault" arrivee="15:10:00" depart="15:12:00" />
+      <Arret gare="Dangé" arrivee="15:25:00" depart="15:27:00" />
+   </Train>
+   <Train num="8145" type="TGV">
+      <Depart gare="Poitiers" heure="11:30:00" />
+      <Destination gare="Paris" heure="13:15:00" />
+      <Arret gare="Châtellerault" arrivee="11:45:00" depart="11:47:00" />
+      <Arret gare="Saint Piere des Corps" arrivee="12:05:00" depart="12:10:00" />
+   </Train>
+</ListeTrains>
+</Ligne>
