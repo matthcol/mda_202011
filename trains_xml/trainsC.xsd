@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+
+  <!-- élément racine pour représenter une ligne de train -->
+  <xsd:element name="Ligne" type="tLigne"/>
+
+  <xsd:complexType name="tLigne">
+    <xsd:sequence>
+      <xsd:element name="ListeGares" type="tListeGares"/>
+      <xsd:element name="ListeTrains" type="tListeTrains"/>
+	</xsd:sequence>
+	<xsd:attribute name="nom" type="xsd:string" use="required" />
+  </xsd:complexType>
+
+  <!-- liste de gares -->
+  <xsd:complexType name="tListeGares">
+    <xsd:sequence>
+      <xsd:element name="Gare" type="tGare" minOccurs="2"
+          maxOccurs="unbounded" />
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <!-- liste de trains -->
+  <xsd:complexType name="tListeTrains">
+    <xsd:sequence>
+      <xsd:element name="Train" type="tTrain" maxOccurs="unbounded" />
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <!-- un train (détails) -->
+  <xsd:complexType name="tTrain">
+    <xsd:sequence>
+      <xsd:element name="Depart" type="tGareTerminus" />
+      <xsd:element name="Destination" type="tGareTerminus" />
+      <xsd:element name="Arret" type="tGareArret" minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+	<xsd:attribute name="type" type="typeTrain" use="required" />
+	<xsd:attribute name="num" type="xsd:int" use="required" />
+  </xsd:complexType>
+
+  <!-- type de train -->
+  <xsd:simpleType name="typeTrain">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="TGV" />
+      <xsd:enumeration value="TER" />
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <!-- type description d'une gare -->
+  <xsd:complexType name="tGare">
+	<xsd:attribute name="nom" type="xsd:string" use="required" />
+  </xsd:complexType>
+
+  <!-- type d'une gare terminus pour un train particulier -->
+  <xsd:complexType name="tGareTerminus">
+	<xsd:attribute name="gare" type="xsd:string" use="required" />
+	<xsd:attribute name="heure" type="xsd:time" use="required" />
+  </xsd:complexType>
+
+  <!-- type d'une gare arrêt pour un train particulier -->
+  <xsd:complexType name="tGareArret">
+	<xsd:attribute name="gare" type="xsd:string" use="required" />
+	<xsd:attribute name="arrivee" type="xsd:time" use="required" />
+	<xsd:attribute name="depart" type="xsd:time" use="required" />
+  </xsd:complexType>
+
+</xsd:schema>
